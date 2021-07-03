@@ -1,20 +1,36 @@
 // Assignment code here
 function generatePassword() {
-  passLength = lengthCheck();
-
+  var passLen = lengthCheck();
+  
 };
 
 // check for length of password
 function lengthCheck() {
-  var passLength = window.prompt("Please select the length of your password: 8-128 characters accepted.");
-  passLength = parseInt(passLength);
+  passLen = lengthPrompt();
   
-  if (passLength < 8 || passLength > 128) {
+   // check if user inputed a FLOAT
+   if (parseInt(passLen) !== parseFloat(passLen)) {
+    window.alert("Please enter a non-zero INTEGER");
+    lengthCheck();
+  }
+    // check if user inputed a STRING
+  if (!parseInt(passLen)) {
+    window.alert("Please enter a non-zero INTEGER");
+    lengthCheck();
+  }
+  // check if an INTEGER input is between 8-128
+  if (parseInt(passLen) < 8 || parseInt(passLen) > 128) {
     window.alert("Please choose a number GREATER than 8 or LESS than 128.");
     lengthCheck();
   }
-  return passLength;
+
+  return parseInt(passLen);
 };
+
+// lengthCheck calls this function to prompt user input for password length
+function lengthPrompt() {
+  return window.prompt("Please select the length of your password: 8-128 characters accepted.");
+}
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
