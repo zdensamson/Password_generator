@@ -2,8 +2,31 @@
 function generatePassword() {
   // stores the desired length of password
   passLen = lengthCheck();
+  // stores which characters to use (true/false)
   charList = charType();
+  // x-ref for what random char functions to call
+  functionReference = functionSelector(charList);
+
+  // generate empty string to append randomly generated password
+  passwordHolder = "";
+  for (i = 0 ; i < passLen ; i++) {
+    charSelector = functionReference[Math.floor(Math.random()*functionReference.length)];
+    if (charSelector == 1) {
+      charSelector = randomLower();
+    }
+    else if (charSelector == 2) {
+      charSelector = randomUpper();
+    }
+    else if (charSelector == 3) {
+      charSelector = randomNum();
+    }
+    else {
+      charSelector = randomSpecial();
+    }
+    passwordHolder = passwordHolder.concat(charSelector);
+  };
   
+  return passwordHolder;
 };
 
 // check for length of password
@@ -32,7 +55,7 @@ function lengthCheck() {
 // lengthCheck calls this function to prompt user input for password length
 function lengthPrompt() {
   return window.prompt("Please select the length of your password: 8-128 characters accepted.");
-}
+};
 
 // ask yes/no for each possible character type 
 function charType() {
@@ -48,7 +71,35 @@ function charType() {
     charType();
   }
   return charList;
-}
+};
+
+function randomLower() {
+  return String.fromCharCode(Math.floor(Math.random()*26)+97);
+};
+function randomUpper() {
+  return String.fromCharCode(Math.floor(Math.random()*26)+65);
+};
+function randomNum() {
+  return String.fromCharCode(Math.floor(Math.random()*10)+48);
+};
+function randomSpecial () {
+  specialList = ["!", "@", "#", "$", "%", "&", "*"];
+  return specialList[Math.floor(Math.random()*7)];
+};
+
+// creates a unique reference list to choose char types selected by user
+function functionSelector (list) {
+  charList = list;
+  newFuncList = [];
+  functionRef = [1,2,3,4];
+
+  for (i = 0 ; i < charList.length ; i++ ) {
+    if (charList[i]) {
+      newFuncList.push(functionRef[i]);
+    }
+  }
+  return newFuncList;
+};
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
