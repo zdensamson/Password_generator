@@ -9,7 +9,7 @@ I was able to accomplish this objective with the following steps:
 1. Collect user inputs through `prompt()` & `confirm()` **methods**
     1. Assign the desired length to a variable
     1. Append the inclusion or omission of 4 unique character types in a list with boolean value representation
-1. Assign each character type an "ID" of 1-4
+1. Assign each character type an "ID" of **1-4**
     1. lowerCase = 1, upperCase = 2, number = 3, specialCharacter = 4
 1. Use my true/false list to root out any character type ID's (1-4) not desired by the user 
 1. Loop over the desired password length 
