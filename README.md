@@ -3,6 +3,8 @@
 ## Description
 My goal with this project was to use only JavaScript functions & methods to generate a secure password given a series of inputs from the user. Specifically my application will take in five inputs from the user-- password length & four acceptable character types-- and it will *randomly* create a password that can be copied from the browser window!
 
+My application can be found here: https://zdensamson.github.io/Password_generator/
+
 I was able to accomplish this objective with the following steps: 
 1. Use an **event listener** to activate the user prompts
 1. Have a single function-- called by the event listener-- trigger all other functions
